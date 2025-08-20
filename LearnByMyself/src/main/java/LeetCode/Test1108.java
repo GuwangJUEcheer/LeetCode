@@ -22,47 +22,50 @@ package LeetCode;
 //解释: 唯一可能的三元组和为 0。
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Test1108 {
 
-    public int threeSum(int[] nums){
-        int n = nums.length;
-        List<List<Integer>> res = new ArrayList<>();
+	public List<List<Integer>> threeSum(int[] nums) {
+		int n = nums.length;
+		List<List<Integer>> res = new ArrayList<>();
 
-        Arrays.sort(nums); // 先对数组进行排序
+		Arrays.sort(nums); // 先对数组进行排序
 
-        for (int i = 0; i < n; i++) {
-            // 跳过重复的nums[i]，避免重复三元组
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
+		for (int i = 0; i < n; i++) {
+			// 跳过重复的nums[i]，避免重复三元组
+			if (i > 0 && nums[i] == nums[i - 1]) {
+				continue;
+			}
 
-            int target = -nums[i];
-            int l = i + 1;
-            int r = n - 1;
+			int target = -nums[i];
+			int l = i + 1;
+			int r = n - 1;
 
-            while (l < r) {
-                int sum = nums[l] + nums[r];
+			while (l < r) {
+				int sum = nums[l] + nums[r];
 
-                if (sum == target) {
-                    // 找到符合条件的三元组
-                    res.add(Arrays.asList(nums[i], nums[l], nums[r]));
+				if (sum == target) {
+					// 找到符合条件的三元组
+					res.add(Arrays.asList(nums[i], nums[l], nums[r]));
 
-                    // 跳过重复的nums[l]
-                    while (l < r && nums[l] == nums[l + 1]) l++;
-                    // 跳过重复的nums[r]
-                    while (l < r && nums[r] == nums[r - 1]) r--;
+					// 跳过重复的nums[l]
+					while (l < r && nums[l] == nums[l + 1]) l++;
+					// 跳过重复的nums[r]
+					while (l < r && nums[r] == nums[r - 1]) r--;
 
-                    // 移动指针
-                    l++;
-                    r--;
-                } else if (sum < target) {
-                    l++;
-                } else {
-                    r--;
-                }
-            }
-        }
-
-        return res;
-    }
+					// 移动指针
+					l++;
+					r--;
+				} else if (sum < target) {
+					l++;
+				} else {
+					r--;
+				}
+			}
+		}
+		return res;
+	}
 }

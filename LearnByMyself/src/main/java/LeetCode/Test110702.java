@@ -1,4 +1,5 @@
 package LeetCode;
+
 //给定一个长度为 n 的整数数组 height。数组中的每个元素表示竖线的高度。找出其中的两条竖线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
 //
 //返回容器可以存储的最大水量。
@@ -16,20 +17,21 @@ package LeetCode;
 //输出: 1
 public class Test110702 {
 
-    public int maxArea(int[] nums){
+	public int maxArea(int[] nums) {
 
-        int left = 0;
-        int right = nums.length -1;
-        int res = 0;
-        int area = 0;
-        while(l < r){
-            area = Math.min(nums[left],nums[right])*(right-left);
-            res = Math.max(area,res);
-            if(nums[right] > nums[left]){
-                l++;
-            }else{
-                r--;
-            }
-        }
-    }
+		int l = 0;
+		int r = nums.length - 1;
+		int res = 0;
+		int area = 0;
+		while (l < r) {
+			area = Math.min(nums[l], nums[r]) * (r - l);
+			res = Math.max(area, res);
+			if (nums[r] > nums[l]) {
+				l++;
+			} else {
+				r--;
+			}
+		}
+		return res;
+	}
 }

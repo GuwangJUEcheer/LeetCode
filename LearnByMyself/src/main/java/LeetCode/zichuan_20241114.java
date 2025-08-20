@@ -27,22 +27,22 @@ import java.util.HashMap;
 -10^7 <= k <= 10^7
 * */
 public class zichuan_20241114 {
-
-    public int subarraySum(int[] nums, int k) {
-
-        int n = nums.length;
-        int[] sums = new int[n];
-        sums[0] = nums[0];
-        for (int i = 1; i < n; i++) {
-            sums[i] = sums[i-1] + nums[i];
-        }
-        int count = 0;
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        for (int i = 0; i < ; i++) {
-            //如果某个j开始到i i-j的和是k 说明这个子串的数量是i-j
-            count += hashMap.getOrDefault(sums[i]-k,0);
-            hashMap.put(sums[i],hashMap.getOrDefault(sums[i],0)+1);
-        }
-        return count;
-    }
+//
+//    public int subarraySum(int[] nums, int k) {
+//
+//        int n = nums.length;
+//        int[] sums = new int[n];
+//        sums[0] = nums[0];
+//        for (int i = 1; i < n; i++) {
+//            sums[i] = sums[i-1] + nums[i];
+//        }
+//        int count = 0;
+//        HashMap<Integer, Integer> hashMap = new HashMap<>();
+//        for (int i = 0; i <test; i++) {
+//            //如果某个j开始到i i-j的和是k 说明这个子串的数量是i-j
+//            count += hashMap.getOrDefault(sums[i]-k,0);
+//            hashMap.put(sums[i],hashMap.getOrDefault(sums[i],0)+1);
+//        }
+//        return count;
+//    }
 }

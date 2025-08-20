@@ -1,10 +1,7 @@
 package LeetCode;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 //给你一个字符串数组，请将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
 //
@@ -23,18 +20,32 @@ import java.util.List;
 //输出：[["a"]]
 public class Test110502 {
 
-    //利用Arrays.sort这个方法
-    public List<List<String>> groupAnagrams(String[] strs){
-//
+//    //利用Arrays.sort这个方法
+//    public List<List<String>> groupAnagrams(String[] strs){
+////
+////        Map<String,List<String>> map = new HashMap<String, List<String>>();
+////
+////        for(String key : strs){
+////
+////            char[] charArray = key.toCharArray();
+////            Arrays.sort(charArray);
+////            String sortKey = new String(charArray);
+////            if(map.contains(sortKey)){
+////                map.put(sortKey,map.get(sortKey).add(key));
+////            }else{
+////                List<String> valueList = new ArrayList<>();
+////                valueList.add(key);
+////                map.put(sortKey,valueList);
+////            }
+////            return new ArrayList<>(map.values());
+////        }
 //        Map<String,List<String>> map = new HashMap<String, List<String>>();
 //
 //        for(String key : strs){
 //
-//            char[] charArray = key.toCharArray();
-//            Arrays.sort(charArray);
-//            String sortKey = new String(charArray);
-//            if(map.contains(sortKey)){
-//                map.put(sortKey,map.get(sortKey).add(key));
+//            Word w = new Word(key);
+//            if(map.containsKey(w)){
+//               map.get(w).add(key);
 //            }else{
 //                List<String> valueList = new ArrayList<>();
 //                valueList.add(key);
@@ -42,39 +53,24 @@ public class Test110502 {
 //            }
 //            return new ArrayList<>(map.values());
 //        }
-        Map<String,List<String>> map = new HashMap<String, List<String>>();
-
-        for(String key : strs){
-
-            Word w = new Word(key);
-            if(map.containsKey(w)){
-               map.get(w).add(key);
-            }else{
-                List<String> valueList = new ArrayList<>();
-                valueList.add(key);
-                map.put(sortKey,valueList);
-            }
-            return new ArrayList<>(map.values());
-        }
-        class Word{
-            int[] counts;
-            Word(String s){
-                final char[] chars = s.toCharArray();
-                counts = new int[26];
-                for(char c : chars){
-                    int index = c-'a';
-                    counts[index]++;
-                }
-            }
-
-            @Override
-            public boolean equals(Object obj) {
-                return Arrays.equals(counts,(Word)obj.counts);
-            }
-
-            public int hashCode(){
-                return  Arrays.hashCode(counts);
-            }
-        }
-    }
+//        class Word{
+//            int[] counts;
+//            Word(String s){
+//                final char[] chars = s.toCharArray();
+//                counts = new int[26];
+//                for(char c : chars){
+//                    int index = c-'a';
+//                    counts[index]++;
+//                }
+//            }
+//
+//            @Override
+//            public boolean equals(Object obj) {
+//                return Arrays.equals(counts,(Word)obj.counts);
+//            }
+//
+//            public int hashCode(){
+//                return  Arrays.hashCode(counts);
+//            }
+//        }
 }
